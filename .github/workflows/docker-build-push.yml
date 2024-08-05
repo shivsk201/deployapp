@@ -24,16 +24,16 @@ jobs:
         credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
  
     - name: Configure Docker to use the Artifact Registry repository
-      run: |
-gcloud auth configure-docker us-west1-docker.pkg.dev
+      run: | 
+      gcloud auth configure-docker us-west1-docker.pkg.dev
  
     - name: Build Docker image
       run: |
-docker build -t us-west1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG .
+      docker build -t us-west1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG .
  
     - name: Push Docker image to Artifact Registry
       run: |
-docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG
+      docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG
  
     env:
       PROJECT_ID: ferrous-tine-424803-c4
