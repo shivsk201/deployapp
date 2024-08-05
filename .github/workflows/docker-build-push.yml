@@ -27,10 +27,10 @@ jobs:
       run: gcloud auth configure-docker us-west1-docker.pkg.dev
  
     - name: Build Docker image
-      run: docker build -t us-west1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG .
+      run: docker build -t us-west1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$GITHUB_SHA .
  
     - name: Push Docker image to Artifact Registry
-      run: docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$TAG
+      run: docker push us-west1-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/$IMAGE_NAME:$GITHUB_SHA
  
     env:
       PROJECT_ID: ferrous-tine-424803-c4
